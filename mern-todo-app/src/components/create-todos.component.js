@@ -9,6 +9,8 @@
 */
 
 import React, {Component} from 'react';
+
+import axios from 'axios';
 /**
 -) CreateTodo is an entity
 -) This module declares a single entity.
@@ -87,13 +89,28 @@ export default class CreateTodo extends Component{
         console.log(`Todo priority    : ${this.state.todo_priority}`)
         console.log(`Todo completed   : ${this.state.todo_completed}`)
 
-        /*
+        /*                                                                                                                      
         -) UI Update
         -) Do not modify state directly. Instead use setState() to modify it
         -) this.state can only be initalized in constructor
         -) when setState() is called, React merges the object provided in the current state.
         -) 
          */
+
+        const newTodo = {
+            todo_description : this.state.todo_description,
+            todo_completed   : this.state.todo_completed,
+            todo_responsible : this.state.todo_responsible,
+            todo_priority    : this.state.todo_priority
+        } 
+
+        axios.post('http://localhost:4040/todos/add', newTodo)
+        .then(res => console.log(res.data))
+        .catch(err => {
+            //res.status(400).send("Update not possible");
+            console.log("Errow while posting")
+        })
+            
         this.setState({
             todo_description:'',
             todo_responsible:'',
@@ -107,7 +124,7 @@ export default class CreateTodo extends Component{
         return(
             <div style={{marginTop:20}}>
                 <h3>Create new todo</h3>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.OnSubmit}>
                     <div className="form-group">
                         <label> Description: </label>
                         <input type="text"
