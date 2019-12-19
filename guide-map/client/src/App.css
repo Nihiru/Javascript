@@ -1,0 +1,37 @@
+body{
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root{
+  height: 100%;
+}
+.map{
+  height: 100%;
+  max-zoom: 18;
+}
+.message-form{
+  /** Property will be overriden by .card property
+      Using '!important' to force it as the main property   
+  */
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  max-width: 300px;
+}
+
+/**
+* including img or svg disturbs the marker element to be displayed correctly
+
+img{
+  background-image: url(Spinner.gif);
+  width: 100%;
+  height: auto;
+  width:200px;
+  height: 200px;
+}*/
+video {
+  width: 100%;
+}
