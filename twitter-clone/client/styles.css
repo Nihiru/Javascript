@@ -1,0 +1,14 @@
+.title{
+    text-align: center;
+}
+.tweet-form, .loading-gif, .error-message{
+    width: 50%;
+    margin: auto;
+}
+.loading-gif{
+    text-align: center;
+}
+.tweets{
+    width: 40%;
+    margin: 0 auto;
+}
