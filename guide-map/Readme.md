@@ -12,7 +12,7 @@ The project consists of client-side and server-side
 <ul>
   <li> Establish the database connection to store the messages, user, location of the user </li>
   <li> Middleware to handle actions based while posting, validating and retrieving data from servers </li> 
- </ul
+ </ul>
  
  ## External Libraries
  <ul>
@@ -20,3 +20,7 @@ The project consists of client-side and server-side
  <li> morgan    -  </li>
  <li> supertest -  </li>
 </ul>
+
+## Run 
+<ul>
+  <li>  </li>
