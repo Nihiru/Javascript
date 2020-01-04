@@ -14,8 +14,9 @@ Project is dissected into front-end and backend.
   
 ## Libraries used
 <ul> 
-  <li> bad-words - package to monitor swearing words given in the comment </li>
-  <li> express   - to route control and actions to be taken when different parts of the page is visited </li>
-  <li> cors      - to have cross-reference talks with different origins </li>
-  <li> monk      - to establish MongoDB database connection and perform operations </li>
+  <li> bad-words          - package to monitor swearing words given in the comment </li>
+  <li> express            - to route control and actions to be taken when different parts of the page is visited </li>
+  <li> cors               - to have cross-reference talks with different origins </li>
+  <li> monk               - to establish MongoDB database connection and perform operations </li>
+  <li> express-rate-limit - to set a limit on the amount of characters given by the user in the comment section </li>
  </ul>
