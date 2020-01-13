@@ -1,0 +1,41 @@
+
+  King Shan needs support of 3 or more kingdoms to be the ruler
+  Kingdoms
+  -) SPACE - GORILLA
+  -) WATER - OCTOPUS
+  -) AIR   - OWL
+  -) ICE   - MAMMOTH
+  -) FIRE  - DRAGON
+  -) LAND  - PANDA
+ 
+ 
+ King Shan sends an message with following parameters
+ -) Message will contain kingdom's EMBLEM 
+ -) Since EMBLEM will play crucial role in deciding whether the referring kingdoms are allies or enemies.
+ -) How encryption works ?
+    -) Message with EMBLEM  are encrypted based on the length of the EMBLEM.
+    -) Encryption Applied : `Sesar Cuipher`
+         A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+         where Z is linked to A
+    -) Instance
+        ex: Kingdom LAND has PANDA as its EMBLEM. PANDA is of 5 characters. Encryption is applied to
+             each character P + 5 =>  U
+                            A + 5 =>  F
+                            N + 5 =>  S
+                            D + 5 =>  I
+                            A + 5 =>  F
+            constraints :
+            -) Vowels should be present at least twice (Combined)
+            -) Consonants should be present at least once (Combined)
+    -) Input                                            Output
+        KINGDOM_1 SECRET_MESSAGE_TO_KINGDOM1            RULER ALLY_KINGDOM1, ALLY_KINGDOM2,...ALLY_KINGDOMN
+        KINGDOM_2 SECRET_MESSAGE_TO_KINGDOM1
+        KINGDOM_N SECRET_MESSAGE_TO_KINGDOMN
+    -) Allies would have this encrpted characters and enemies would have the opposite.
+
+
+-) Key things to remember befor uploading
+[] Security 
+[] Test for different file operations
+[] Refactor code before submission
+[] Make code more general, more specific to a task

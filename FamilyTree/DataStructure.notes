@@ -1,0 +1,34 @@
+family{
+    galaxy : ''
+    planet : ''
+    protagonists: [
+        // Multiple protagonists 
+                    {
+                        id : '',
+                        father : {
+                            name : '',
+                            gender : ''
+                        },
+                        mother :  {
+                            name: ''
+                            gender : ''
+                        },
+                        children : [
+                                      "children 1" :  {   
+                                            id : '',
+                                            husband : {
+                                                name : '',
+                                                gender : ''
+                                            },
+                                            wife :  {
+                                                name: ''
+                                                gender : ''
+                                            },
+                                            children : [
+                                            ]
+                                        }
+
+                        ]
+                    }
+    ]
+}

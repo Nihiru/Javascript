@@ -1,0 +1,4 @@
+ADD_GALAXY, TaraB
+ADD_PLANET, Lengaburu
+ADD_FAMILY_HEAD_EMPEROR, King Shan, Male
+ADD_FAMILY_HEAD_QUEEN, Queen Anga, Female

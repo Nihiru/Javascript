@@ -1,0 +1,6 @@
+ADD_CHILD, Queen Anga, Chit, male
+ADD_CHILD, Queen Anga, Ish, male
+ADD_CHILD, Queen Anga, Vich, male
+ADD_CHILD, Queen Anga, Aras, male
+ADD_CHILD, Queen Anga, Satya, female
+ADD_SPOUSE, Chit, Amba, female
