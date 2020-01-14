@@ -11,8 +11,8 @@ let family = {}
 // for every member of the family 
 function Member(){
   return this.member = {
-       husband: {},
-       wife : {},
+       husband: {"name" : '', "gender" :''},
+       wife : {"name" : '',"gender": ''},
        children : []
    }
 }
@@ -37,7 +37,7 @@ function EstablishKingdomDataStrip(){
 }
 
 function PopulateKingdom(){
-    var galaxy = "", planet = "", protagonists =  [], temp = {};
+    var galaxy = "", planet = "", protagonists =  [], temp = new Member();
     for(let elements of establishKingdomDataStrip){
         let  individual = (elements.split(','))
 
@@ -117,11 +117,10 @@ function PopulateTree(){
             }
         }       
     }
-    // showoff()
+    showoff()
 }
 
 function AddChild(searchElement, currentFamilyObject){
- 
             currentFamilyObject.forEach(element => { // level 0
                 for(let innerElement of Object.values(element)){ // level 1
                         if(innerElement instanceof Array){
@@ -129,71 +128,51 @@ function AddChild(searchElement, currentFamilyObject){
                         }
                         else if(innerElement instanceof Object){
                             if(searchElement[1].trim() === innerElement.name.trim()){ // level 2
-                                if(element.children === undefined){
-                                    element.children = []    
-                                }
                                 let newMember = Member() // initalizing new member dynamically
-                                // console.log(newMember)
                                 if(searchElement[3].trim().toLowerCase() === "male"){
-                                    newMember["husband"] = {
-                                        "name" : searchElement[2],
-                                        "gender" : searchElement[3]
-                                    }
-                                    element.children.push(newMember)
+                                    newMember.husband.name = searchElement[2]
+                                    newMember.husband.gender = searchElement[3]
                                 }
                                 else {
                                     // console.log("level 2  -- else ")
-                                    newMember["wife"] = {
-                                        "name" : searchElement[2],
-                                        "gender" : searchElement[3]
-                                    }
-                                    element.children.push(newMember)
+                                    newMember.wife.name = searchElement[2]
+                                    newMember.wife.gender = searchElement[3]
                                 }
+                                element.children.push(newMember)
                                 return true
-                                // console.log(element)
                             }
-                            
                         }   
                         else {
                             return -1;
                         }
                     }
             })
-   
-    
 }
 
 function AddSpouse(searchElement, currentFamilyObject){
-    console.log("Parent : ", currentFamilyObject)
+    // console.log("Parent : ", currentFamilyObject)
     currentFamilyObject.forEach(element => {
-        // console.log("level 0")
         for(let innerElement of Object.values(element)){ // level 1
-            // console.log("level 1")
-            // console.log(" Inner Element is : ",innerElement)
-                console.log("Individual element : ",element)
-                if(innerElement instanceof Array && innerElement !== []){
-                    console.log("Array :", innerElement)
+                if(innerElement instanceof Array){
+                    // console.log("Array :", innerElement)
                     AddSpouse(searchElement, innerElement)
-                    // return true
                 }
-                else if(innerElement !== {} && innerElement instanceof Object){
-                    console.log(innerElement.name)
+                else if(innerElement instanceof Object){
+                    // console.log(innerElement.name)
                     if(searchElement[1].trim().toLowerCase() === innerElement.name.trim().toLowerCase()){
-                        // console.log(innerElement.name)
                         if(innerElement.gender.trim() === 'male'){
-                            //console.log(innerElement.gender.trim() === 'male')
-                            element["wife"] = {
+                            element.wife = {
                                 "name" : searchElement[2],
                                 "gender" : searchElement[3]
                             }
                         }else{
-                            element["husband"] = {
+                            element.husband = {
                                 "name" : searchElement[2],
                                 "gender" : searchElement[3]
                             }
                         }
                         // console.log(element)
-                                            
+                        return true             
                     }       
                 }
                 else{
@@ -212,8 +191,8 @@ function familyLength(){
 }
 
 function showoff(){
-    console.log(this.family)
-    console.log(this.family.protagonists[0].children.length)
+    // console.log(this.family)
+    console.log(this.family.protagonists[0].children[4].children[2])
 }
 
 function getCurrentFunction(fname){

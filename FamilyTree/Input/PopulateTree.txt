@@ -4,3 +4,26 @@ ADD_CHILD, Queen Anga, Vich, male
 ADD_CHILD, Queen Anga, Aras, male
 ADD_CHILD, Queen Anga, Satya, female
 ADD_SPOUSE, Chit, Amba, female
+ADD_SPOUSE, Vich, Lika, female
+ADD_SPOUSE, Aras, Chitra, female
+ADD_SPOUSE, Satya, Vyan, male
+ADD_CHILD, Amba, Dritha, female
+ADD_CHILD, Amba, Tritha, female
+ADD_CHILD, Amba, Vritha, male
+ADD_CHILD, Lika, Vila, female
+ADD_CHILD, Lika, Chika, female
+ADD_CHILD, Chitra, Jnki, female
+ADD_CHILD, Chitra, Ahit, male
+ADD_CHILD, Satya, Asva, male
+ADD_CHILD, Satya, Vyas, male
+ADD_CHILD, Satya, Atya, female
+ADD_SPOUSE, Dritha, Jaya, male
+ADD_SPOUSE, Jnki, Arit, male
+ADD_SPOUSE, Asva, Satvy, female
+ADD_SPOUSE, Vyas, Krpi, female
+ADD_CHILD, Dritha, Yodhan, male
+ADD_CHILD, Jnki, Laki, male
+ADD_CHILD, Jnki, Lavnya, female
+ADD_CHILD, Asva, Vasa, male
+ADD_CHILD, Vyas, Kriya, male
+ADD_CHILD, Vyas, Krithi, female
