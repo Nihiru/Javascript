@@ -1,67 +1,28 @@
-const fs = require('fs')
-const http = require('http')
-const path = require('path')
-const mime = require('mime')
+var http = require("http"),
+  socketIO = require("socket.io"),
+  fs = require("fs"),
+  server,
+  io;
 
-const chatServer = require('./lib/chat_server.js')
+server = http.createServer(function (req, res) {
+  fs.readFile(__dirname + "/client/index.html", function (err, data) {
+    res.writeHead(200);
+    res.end(data);
+  });
+});
 
-const cache = {}
+server.listen(3000, () => {
+  console.log("server listening onn PORT 3000");
+});
+io = socketIO(server);
 
-function send404(response){
-    console.log(arguments.callee.name)
-    response.writeHead(404, {'Content-Type' :'text/plain'})
-    response.write('Error 404 : resource not found')
-    response.end();
-}   
-
-function sendFile(response, filePath, fileContents){
-    console.log(arguments.callee.name)
-    response.writeHead(200, {'Content-Type': mime.lookup(path.basename(filePath))})
-    response.end(fileContents)
-}
-
-function serverStatic(response, cache, absPath){
-    console.log(arguments.callee.name)
-    if(cache[absPath]){
-        sendFile(response, absPath, cache[absPath])
-    } else {
-        fs.exists(absPath, function(exists){
-            if(exists){
-                fs.readFile(absPath, function(err, data){
-                    if(err)
-                        send404(response)
-                    else{
-                        cache[absPath] = data;
-                        sendFile(response, absPath, data)
-                    }
-                })
-            } else {
-                send404(response)
-            }
-        })
-    }
-}
-
-const server = http.createServer(function(request, response){
-    console.log(arguments.callee.name)
-    var filePath = false;
-    if(request.url == '/'){
-        filePath = 'public/index.html';
-    } else {
-        filePath = 'public/'+ request.url
-    }
-    var absPath = './' +filePath
-    serverStatic(response, cache, absPath)
-})
-
-
-server.listen(3000, function(){
-    console.log('Server listening on port 3000')
-})
-
-// starts the server functionality
-/**  
- * passing server has information about interface(IP, port, transport mechanism)
- * 
-*/
-chatServer.listen(server)
+// io.on('connection',()) methods in the server-side code listens for any new client-side socket connections.
+io.on("connection", function (socket) {
+  // when the server gets a new socket connection, it will emit a message to every availbale socket that is connected to this port
+  socket.emit("greeting-from-server", {
+    greeting: "Hello client",
+  });
+  socket.on("greeting-from-client", function (message) {
+    console.log(message);
+  });
+});

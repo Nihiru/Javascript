@@ -1,15 +1,14 @@
 {
   "name": "chat",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "\"Bi-directional chat application\"",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Nikhil M",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  }
 }

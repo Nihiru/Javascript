@@ -1,0 +1,8 @@
+:Sockets.io
+    :leverages the power of websockets along with several fallbacks, including JSON long polling and JSONP long polling
+     through a single unified API.
+    :It can be used to create bi-directional interactions such as real-time dashboards, chat app, multiplayer games
+    :It is built with Engine.IO which is a lower-level abstraction on top of the websocket technology
+    :It helps in triggering and listening to events between client-side and server-side
+    :websocket API protocol is a TCP that relies on HTTP for its inital handshake.
+    :It allows to use other real-time protocols if websockets aren't available.
