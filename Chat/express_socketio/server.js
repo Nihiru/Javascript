@@ -15,7 +15,7 @@ server.listen(5000);
 io = socketIO(server);
 
 io.on("connection", (socket) => {
-  socket.emit("greeting-from-server", () => {
+  socket.emit("greeting-from-server", function () {
     greeting: "Hello client";
   });
 
