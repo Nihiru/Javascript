@@ -6,3 +6,18 @@
     :It helps in triggering and listening to events between client-side and server-side
     :websocket API protocol is a TCP that relies on HTTP for its inital handshake.
     :It allows to use other real-time protocols if websockets aren't available.
+
+:Polling
+    :It is the process where currently running process waits for another process input.
+    :It also refers to situations where it repeatedly checks for readiness state of another process
+    :Implementation
+        :Long/short polling (client pull) - client asking server for updates at certain regular intervals
+            :Short polling is an AJAX-based timer that calls at fixed delays 
+            :Long polling is an comet
+                :Comet - It is a model which is a long-held HTTPS request allows a web-server to push data to browser,
+                         without the browser explicitly requesting it
+        :Websockets(server push) - server is proactively pushing updates to the client
+        :Server-Sent Events(server push)  
+:Implementation
+    :socket.on('listeners', ()) - listens to the event
+    :socket.emit('emitters', ()) - emit an event to the socket
