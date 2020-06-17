@@ -12,12 +12,36 @@
     :It also refers to situations where it repeatedly checks for readiness state of another process
     :Implementation
         :Long/short polling (client pull) - client asking server for updates at certain regular intervals
-            :Short polling is an AJAX-based timer that calls at fixed delays 
+            :Short polling is an AJAX-based timer that calls at fixed delays
+                :AJAX calls work on the HTTP protocol meaning requests to the same domain should get multiplexed by
+                 default
+                :Pitfalls
+                    :Multiplexing(Polling responses can't be in sync)
+                    :Polling requires 3 round trips(TCP SIN, SSL, and Data)
+                    :Timeouts(Connection getting closed by the proxy server if it remains idle for too long) 
             :Long polling is an comet
                 :Comet - It is a model which is a long-held HTTPS request allows a web-server to push data to browser,
                          without the browser explicitly requesting it
         :Websockets(server push) - server is proactively pushing updates to the client
-        :Server-Sent Events(server push)  
+            :It will persists connection between client and the server.
+            :Its a communication protocol providing full-duplex communications channel over a single TCP connection
+            :Implementing custom mulitplexing on both server and client is bit complicated
+            :They are frame-based not stream-based
+            :Send messages to the server and get event-driven responses without having to poll the server for a reply
+            :Websocket server:
+                :A websocket server is an application listening on any port of a TCP server
+                :Websocket handshake
+                    :the server must listen for incoming socket connections using
+            :Websocket client:
+                :A client has to start the websocket handshake process by contacting the server and requesting 
+                 a websocket connection
+            :Data-frame going from client to server and vice-versa is masked using XOR encryption
+            :Heartbeat or Control-frame of websockets are ping and pong can be used to determine the state of the connection  
+        :Server-Sent Events(server push)
+            :Its a mechanism that allows the server to asynchronously push the data to the client once the client-
+             server connection is established
+            :It follows publish-subscribe model
+            :SSE is based on HTTP, it has a natural fit with HTTP/2  
 :Implementation
     :socket.on('listeners', ()) - listens to the event
     :socket.emit('emitters', ()) - emit an event to the socket
