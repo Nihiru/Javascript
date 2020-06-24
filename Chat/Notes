@@ -36,7 +36,20 @@
                 :A client has to start the websocket handshake process by contacting the server and requesting 
                  a websocket connection
             :Data-frame going from client to server and vice-versa is masked using XOR encryption
-            :Heartbeat or Control-frame of websockets are ping and pong can be used to determine the state of the connection  
+            :Heartbeat or Control-frame of websockets are ping and pong can be used to determine the state of the connection
+            :To close a connection either the client or server can send a control frame with data containing a specified
+             control sequence to begin the closing handshake. Upon receiving such a frame, the other peers sends a close frame
+             in response. The first peer then closes the connection. Any further data received after closing the connection is 
+             then discarded
+            :Websockets is not necessarily a good protocol if neither of the endpoints is an actual browser
+            :It suffers a lot under restrictions and implementation details that were forced upon the protocol to make it
+             work with existing HTTP infrastructure
+            :In practice it combines parts of UDP (message based) and TCP for reliability
+            :To use websockets an upgrade from HTTP connection to TCP connection is imminent
+                :Why ?
+                    :A server that handles stateless requests to answer with a reply has a very different behaviour
+                     than a server that keeps a TCP connections open.
+                    :It uses privileged ports which is used by HTTP/HTTPS
         :Server-Sent Events(server push)
             :Its a mechanism that allows the server to asynchronously push the data to the client once the client-
              server connection is established
@@ -45,3 +58,12 @@
 :Implementation
     :socket.on('listeners', ()) - listens to the event
     :socket.emit('emitters', ()) - emit an event to the socket
+
+:TCP
+    :TCP can be used establish a connection and exchange data between applications in an communication network
+    :A three-way handshake is required to open a connection hence, it is called as connection-oriented protocol
+    :TCP prevents the sender from sending in more data than receiver can handle with the window size provided by the receiver
+    :Each packet(segment) would have a checksum field for error control
+    :It guarantees the reliable delivery of segments. Incase of segment loss or corruption, segments are re-transmitted
+    :It resassembles the packet in the correct order at the receiver side
+    :It uses a congestion avoidance algorithm to avoid the network from being congested
