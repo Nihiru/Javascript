@@ -1,0 +1,60 @@
+:Microservices
+    :An application is divided into a set of loosely coupled, collaborating services.
+    :Each service would include
+        :Highly maintainable and testable
+        :Loosely coupled with other services
+        :Independently deployable
+        :Capable of being developed by a small team
+    :Communication between these services using either synchronous protocols such as HTTP/REST or asynchronous protocols
+        such as AMQP
+    :These services would have independent Databases[1]
+    :Data consistency between services is maintaned using saga pattern[2]
+    :Services must be loosely coupled so that they can be developed, deployed and scaled Independently
+    :Problems with this approach
+        :1) Data management between services
+            - Communication of its services with the other services of the application
+            - Data from DB of a service will not be accessed by another service. 
+                - why ?
+                If DB of a service crashes then its dependent service would crash as well.
+                DB schema/structure would change unexpectedly resulting in the service yielding malformed data
+                Some services might function more efficiently with different types of DB's
+    :Solution
+        :1) Communication strategies between services
+            :Sync
+                :Services communicate with each other using direct requests regardless of requests type i.e, JSON, http...
+                :Requesting services from a service would raise the need for dependencies
+                :Requesting service don't need to have a separate DB
+                :If any inter-service request fails, the overall request fails
+                :The entire request is only as fast as the slowest request
+                :It becomes complicated when nested services are involved 
+
+            :Async
+                :Type-1
+                 - Event Bus is used to handle notifications or events being emitted from different services
+                 - Single-point of failure exists in event bust 
+                 - Some of the problems faced by synchronous persists here
+                 - Event Bus takes the request from service and traverse it to the another service 
+                :Type-2
+                 - When a service updates its DB, an event is fired to an event bus and then the
+                   consumers of this service will receive notification about the updation and the receiving service will have
+                   to update its DB
+                 - Extrage storage is needed
+                 - This is the way-to-go
+
+
+
+
+:Extensions
+[1]Database as a service
+    :Services need to persist data in some kind of database.
+    :Each service can use the type of database that is best suited to its needs.
+        :In terms of relational database
+            :Private-tables-per-service - each service owns set of tables that must only be accessed by that service
+            :Schema-per-service - each service has a database schema that's private to that service
+            :Database-server-per-service - each service has it's own database server.
+    :Drawbacks
+        :Complexity of managing multiple SQL and NoSQL Databases
+        :Implementing queries that join data that is now in multiple databses is challenging
+        :Implementing business transactions that span multiple services is not straightforward. Distributed transactions
+         are best avoided because of CAP theorem
+[2]Saga pattern
