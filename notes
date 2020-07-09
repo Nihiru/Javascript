@@ -1,0 +1,11 @@
+:Promise
+    :Asynchronous programming in JS is done with callbacks
+    :A promise is an object which can be returned synchronously from an Asynchronous function
+    :asyn and await allows to structure promise based code as if it was synchronous
+    :A promise may be in 3 possible states: 
+        :fulfilled
+        :rejected
+        :pending
+    :A promise is settled if it's not pending(either resolved or rejected)
+    :Native JS promises don't expose promise states. Only the function responsible for creating the promise will
+     have the knowledge of promise status, or access to resolve or reject
