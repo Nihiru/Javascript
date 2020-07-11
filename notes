@@ -1,0 +1,12 @@
+:VueJS
+    :A front-end library to build javascript applications
+    :When a vue instance is created, it adds all the properties found in its "data" object to Vue's reactivity system.
+     When the values of those properties change, the vue will "react", updating to match the new values.
+     When properties in "data" are only reactive if they existed when the instance is created.
+     The reactivity system doesn't track changes when property is passed to "Object.freeze()".
+     Vue instances expose a number of useful instance properties and methods. These are prefixed with "$" to diffentiate
+     them from user-defined properties.
+     Vue instance runs functions called lifecycle hooks, such as mounted, updated, destroyed. All lifecycle hooks are
+     called with their "this" context pointing to the Vue instance invoking it
+
+
