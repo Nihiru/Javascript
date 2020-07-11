@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors());
 const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
