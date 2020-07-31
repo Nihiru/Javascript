@@ -8,5 +8,30 @@
      them from user-defined properties.
      Vue instance runs functions called lifecycle hooks, such as mounted, updated, destroyed. All lifecycle hooks are
      called with their "this" context pointing to the Vue instance invoking it
+    :The data and the DOM will be linked then it becomes reactive. A Vue app attaches itself to a single DOM element then fully controls it
+    :"v-bind" applies a special reactive behaviour to the rendered DOM.
+    :Every Vue app starts by creating a new Vue instance with the Vue function.
+    :Every Vue instance goes through a series of initalization steps when it's created
+        :setup data observations
+        :compile the template
+        :mount the instance to the DOM and update the DOM when it changes
+    :Vue uses an HTML-based template syntax that allows to declaratively bind the rendered DOM to the underlying Vue instance's data. Vue compiles the templates into
+     Virtual DOM render functions. Combined with reactivity system, Vue is able to intelligently figure out the minimal number of components to re-render and apply
+     the minimum number of DOM manipulations when the app state changes
+    :lifecycle hooks:
+        :created
+            :Called synchronously after the instance is created
+            :At this stage, the instance has finished processing the options which means the following have been setup
+                :data observations
+                :computed properties
+                :methods
+                :watch/event callbacks
+            :The mounting phase has not been started and the $el property will not be available yet.
+        :mounted
+        :updated
+        :destroyed
+    :All lifecycle hooks are called with their "this" context pointing to the Vue instance invoking it
+
+
 
 
