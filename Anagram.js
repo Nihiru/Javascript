@@ -32,5 +32,33 @@ function findAnagrams(first, second){
     return true
 }
 
-console.log(findAnagrams("anagram", "nagaram"))
-console.log(findAnagrams("aaz", "zza"))
+// console.log(findAnagrams("anagram", "nagaram"))
+// console.log(findAnagrams("aaz", "zza"))
+
+// procedure 2
+function validAanagrams(first, second){
+    if(first.length !== second.length){
+        return false
+    }
+    const lookup = {}
+
+    for(let i=0; i< first.length; i++){
+        let letter = first[i];
+        lookup[letter] ? lookup[letter]++ : lookup[letter] = 1
+    }
+
+    for(let i=0;i<second.length; i++){
+        let letter = second[i]
+        // this condition looks up for `letter` in `lookup` and checks the value for true/false 
+        if(!lookup[letter]){
+            return false
+        } else {
+            // count decreases for each character found 
+            lookup[letter] -= 1
+        }
+    }
+    return true
+}
+
+console.log(validAanagrams("anagram","nagram"))
+console.log(validAanagrams("anagram","nagara"))
