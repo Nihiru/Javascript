@@ -18,8 +18,8 @@ function sum_zero(arr){
     return "No pair found"
 }
 
-// console.log(sum_zero([-3, -2, -1, 0, 1, 2, 3]))
-// console.log(sum_zero(-1,0,1,2,3,4,5))
+console.log(sum_zero([-3, -2, -1, 0, 1, 2, 3]))
+console.log(sum_zero(-1,0,1,2,3,4,5))
 
 /**
  * Usage of two pointers 
@@ -45,7 +45,7 @@ function sum_zero_refactor(arr){
     return "No Pair found"
 }
 
-// console.log(sum_zero_refactor([-3,-2,-1,0,1,4]))
+console.log(sum_zero_refactor([-3,-2,-1,0,1,4]))
 
 
 function uniqueElements(arr){
