@@ -6,28 +6,28 @@ console.log(wait);
 
 
 // Example 2
-function tossASix(){
-	return new Promise((fulfill,reject) => {
+function tossASix() {
+	return new Promise((fulfill, reject) => {
 		var n = Math.floor(Math.random() * 6) + 1
-		if (n === 6){
+		if (n === 6) {
 			fulfill(6)
 		} else {
 			reject(n)
 		}
-	}) 
+	})
 }
 
-function logAndTossAgain(toss){
+function logAndTossAgain(toss) {
 	console.log("Tossed a " + toss + ", need to try again")
 	return tossASix() // returns a promise if a 6 wasn't tossed
 }
 
-function logSuccess(toss){
+function logSuccess(toss) {
 	console.log("Yay, managed to toss a " + toss)
 }
 
-function logFailure(toss){
-	console.log("Tossed a ", + toss  +  ". Too bad, couldn't roll a six ")
+function logFailure(toss) {
+	console.log("Tossed a ", +toss + ". Too bad, couldn't roll a six ")
 }
 
 // tossASix()
@@ -48,30 +48,30 @@ function logFailure(toss){
 
 // Example 3
 var tossTable = {
-	1:'one',
-	2:'twp',
-	3:'three',
-	4:'four',
-	5:'five'
+	1: 'one',
+	2: 'twp',
+	3: 'three',
+	4: 'four',
+	5: 'five'
 }
 
-function toss(){
-	return new Promise(function(fulfill, reject){
-		var n = Math.floor(Math.random() * 6) +1
+function toss() {
+	return new Promise(function (fulfill, reject) {
+		var n = Math.floor(Math.random() * 6) + 1
 		fulfill(n)
 	})
 }
 
-function logAndToss(toss){
+function logAndToss(toss) {
 	var tossWord = tossTable[toss]
-	console.log("Tossed a " + tossWord.toUppercase()+ ".")
+	console.log("Tossed a " + tossWord.toUppercase() + ".")
 }
 
-function logErrorMessage(error){
+function logErrorMessage(error) {
 	console.log("OOPS: " + error.message)
 }
 toss()
-.then(logAndToss)
-.then(logAndToss)
-.then(logAndToss)
-.then(null, logErrorMessage) // required rejectionHandlers when error situations occurs.
+	.then(logAndToss)
+	.then(logAndToss)
+	.then(logAndToss)
+	.then(null, logErrorMessage) // required rejectionHandlers when error situations occurs.

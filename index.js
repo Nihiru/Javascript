@@ -172,13 +172,13 @@
  * this
  */
 // default binding
-// var a = 2;
 
-// var default_binding = () => {
-//     var a = 1;
-//     console.log(this.a)
-// }
-// default_binding();
+function default_binding() {
+    console.log(this.a)
+}
+var a = 2;
+
+default_binding();
 
 // implicit binding
 // var person = {
@@ -236,3 +236,49 @@ var person = {
 // person.withoutthis() // M, Nikhil
 // person.withthisAnonymousFunction() // M, Nikhil
 // person.withthisFunctionExpression() // undefined, undefined
+
+
+/**
+ * 
+ * 
+ * To implicitly pass an object reference. `this` is used as the context object rather than explict pass of the object itself.
+ * 
+ */
+
+function identify() {
+    return this.name + ' stay true to yourself. '
+}
+
+identify.call_me = () => {
+    return 'Adding an property to function object'
+}
+
+// console.dir(identify.call_me)
+
+function identifyCallingItself() {
+    var userAge = 22
+    // using funtion identifier as a function object reference when persistence is required between function calls 
+    return identifyCallingItself.username + ' stay true to yourself. '
+}
+
+identifyCallingItself.username = 'Nikhil'
+
+// console.log(identifyCallingItself())
+
+var obj = {
+    name: "Nikhil",
+    full_name: 'M, ' + this.name
+}
+
+// console.log(obj)
+
+function foo() {
+    this.a = 2
+    console.log(this.a)
+}
+
+function bar() {
+    console.log(this.a)
+}
+
+// foo()
