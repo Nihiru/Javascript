@@ -178,45 +178,86 @@ function default_binding() {
 }
 var a = 2;
 
-default_binding();
+// default_binding();
 
 // implicit binding
-// var person = {
-//     name: 'Rick',
-//     tell: function (person) {
-//         console.log(' Name: ' + this.name + ' Person: ' + person)
-//     }
-// }
+var person = {
+    first_name: 'Rick',
+    tell: function (person) {
+        console.log(' First Name: ' + this.first_name + ' Person: ' + person)
+    }
+}
 
+/**
+ * When there is a context object for a function reference, then implicit binding rule says it's that object that should be used 
+ * for the functions call `this` binding
+ */
 // person.tell('Mark')
-// var ob = person.tell
-// ob('Mark')
+var ob = person.tell
+ob('Mark') // returns - Name: undefined Person: Mark. Look into the function call-site, it is in the global scope
+var first_name = 'Howie'
+ob('Mark')
 
 
-// function greet() {
-//     console.log(this)
-//     console.log(`Name: ${this.name}`)
-//     console.log(`Arguments: ${arguments}`)
-// }
-// var person = {
-//     name: "Trickster"
-// }
+function greet() {
+    console.log(this)
+    console.log(`Name: ${this.name}`)
+    console.log(`Arguments: ${arguments}`)
+}
+var person = {
+    name: "Trickster"
+}
 
 // greet.call(person, 'Does this work?', "Doesn't it?")
 
 // new binding
-// function foo() {
-//     this.name = 'Osama';
-//     this.say = function () {
-//         return " I am " + `${this.name}`
-//     }
-// }
+function foo(lastName) {
+    this.firstName = 'Osama';
+    this.lastName = lastName
+    this.say = function () {
+        return " I am " + this.lastName + ', ' + this.firstName
+    }
+}
 
-// var username = {
-//     'name': 'Ahmed'
-// }
-// var result = new foo()
+var username = {
+    'name': 'Ahmed'
+}
+
+/**
+ * 
+ * 1) A brand new object is created out of thin air.
+ * 2) The newly constructed object is [[Prototype]] - linked
+ * 3) The newly constructed object is set as the this binding for that function call.
+ * 4) Unless the function returns its own alternate object, the new-invoked function call will automatically return the newly constructed object.
+ * 
+ */
+var result = new foo('Bin Laden')
 // console.log(result())
+
+// binding precedence
+function call_me(something) {
+    this.a = something
+}
+
+var obj1 = {
+    call_me: call_me
+}
+var obj2 = {}
+
+// implicit binding
+obj1.call_me(2)
+// console.log(obj1.a) // 2
+
+// explicit binding
+obj1.call_me.call(obj2, 4)
+// console.log(obj2.a) // 4
+
+// new binding
+var new_bind = new obj1.call_me(6)
+// console.log(obj1.a) // 2 
+// console.log(new_bind.a) // 6
+
+
 
 var first_name = 'Kartik'
 var last_name = 'S'
@@ -272,7 +313,7 @@ var obj = {
 
 // console.log(obj)
 
-function foo() {
+function foo1() {
     this.a = 2
     console.log(this.a)
 }
@@ -281,4 +322,4 @@ function bar() {
     console.log(this.a)
 }
 
-// foo()
+// foo1()
