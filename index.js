@@ -174,6 +174,7 @@
 // default binding
 
 function default_binding() {
+    console.log('Inside default_binding')
     console.log(this.a)
 }
 var a = 2;
@@ -193,10 +194,10 @@ var person = {
  * for the functions call `this` binding
  */
 // person.tell('Mark')
-var ob = person.tell
-ob('Mark') // returns - Name: undefined Person: Mark. Look into the function call-site, it is in the global scope
-var first_name = 'Howie'
-ob('Mark')
+// var ob = person.tell
+// ob('Mark') // returns - Name: undefined Person: Mark. Look into the function call-site, it is in the global scope
+// var first_name = 'Howie'
+// ob('Mark')
 
 
 function greet() {
@@ -323,3 +324,21 @@ function bar() {
 }
 
 // foo1()
+
+var myObject = {
+    // define a getter for `a` 
+    get a() {
+        return this.a;
+    },
+    // define a setter for `a`
+    set a(val) {
+        this.a = val * 2;
+    }
+};
+// myObject.a = 2;
+
+console.log(myObject)
+
+// myObject.a = 4
+
+// console.log(myObject)
