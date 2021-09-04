@@ -337,8 +337,60 @@ var myObject = {
 };
 // myObject.a = 2;
 
-console.log(myObject)
+// console.log(myObject)
 
 // myObject.a = 4
 
 // console.log(myObject)
+
+
+// classes and objects
+
+function mixin(sourceObj, targetObj) {
+    for (var key in sourceObj) {
+        if (!(key in targetObj)) {
+            targetObj[key] = sourceObj[key]
+        }
+    }
+    return targetObj
+}
+
+var vehicle = {
+    engines: 1,
+    iginition: function () {
+        console.log("Turning on the engine...")
+    },
+    drive: function () {
+        this.iginition();
+        console.log("Steering and moving forward!!!")
+    }
+}
+var car = mixin(vehicle, {
+    wheels: 4,
+    drive: function () {
+        vehicle.drive.call(this);
+        console.log("Rolling on all " + this.wheels + " wheels!")
+    }
+})
+
+// console.log(car.drive())
+
+// Implicit Mixins
+var Something = {
+    cool: function () {
+        this.greeting = 'Hello World!';
+        this.count = this.count ? this.count + 1 : 1;
+    }
+}
+
+// console.log(Something.greeting) // undefined
+// console.log(Something.cool()) // undefined
+// console.log(Something.greeting) // Hello World!
+// console.log(Something.count) // 1
+
+var Another = {
+    cool: Something.cool
+}
+
+// Another.cool()
+console.log(Another.greeting)
